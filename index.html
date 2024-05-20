@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>The Alphabet Game</title>
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/e3fdf6ef30.js"
+			crossorigin="anonymous"
+		></script>
+		<link
+			rel="stylesheet"
+			href="./style.css"
+		/>
+	</head>
+	<body>
+		<main>
+			<div class="game-container section-padding">
+				<section class="main-screen">
+					<h1>THE ALPHABET GAME</h1>
+					<button class="start-button">
+						START GAME<i class="fa-solid fa-play"></i>
+					</button>
+				</section>
+				<section class="game-screen">
+					<div class="time"><span>60</span></div>
+					<div class="question-container">
+						<p class="word-letter">A</p>
+						<p class="question">Question?</p>
+						<input
+							type="text"
+							class="answer"
+						/>
+						<div class="game-buttons">
+							<button class="answer-btn">Answer</button
+							><button class="pass-btn">Pass</button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<script src="./main.js"></script>
+	</body>
+</html>

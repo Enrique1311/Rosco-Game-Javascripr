@@ -1,0 +1,115 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: #370278;
+	--secondary-color: #fd6514;
+	--primary-transparent-color: #370278af;
+	--grey-color: #3a3a3a;
+	--light-grey-color: #adabab;
+	--green-color: #08d408a7;
+	--red-color: #ea0505;
+	--white-color: #ffffff;
+	--black-color: #000000;
+	--btn-border-radius: 0.5rem;
+	--main-border-radius: 2rem;
+}
+
+body {
+	font-family: "Kanit", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Jaro", sans-serif;
+	font-size: 2rem;
+	letter-spacing: 0.4rem;
+}
+
+.section-padding {
+	padding: 2rem 1rem;
+}
+
+.background-container {
+}
+
+.game-container {
+	position: absolute;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-image: url(./assets/imgs/main-bg.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 0.5;
+	z-index: 1;
+}
+
+/* Main Screen ****************************************/
+
+.main-screen {
+	z-index: 10;
+	display: block;
+	max-width: 700px;
+	margin: auto;
+	text-align: center;
+	padding: 2rem;
+	background-color: var(--primary-transparent-color);
+	border-radius: var(--main-border-radius);
+	color: var(--white-color);
+	border: 2px solid var(--primary-color);
+}
+
+.start-button {
+	background-color: var(--secondary-color);
+	padding: 0.5rem 1rem;
+	border-radius: var(--btn-border-radius);
+	border: none;
+	color: var(--white-color);
+	margin-top: 1rem;
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition: transform 0.3s linear;
+}
+
+.start-button:hover {
+	transform: scale(1.2);
+}
+
+.start-button i {
+	margin-left: 0.5rem;
+}
+
+/* Game Screen******************************** */
+
+.game-screen {
+	display: block;
+	color: var(--white-color);
+}
+
+.current-question {
+	background-color: var(--light-grey-color);
+}
+
+.question-container {
+	background-color: var(--primary-transparent-color);
+	text-align: center;
+	max-width: 800px;
+	margin: auto;
+	border: 2px solid var(--primary-color);
+	border-radius: var(--main-border-radius);
+}
+
+.correct-answer {
+	background-color: var(--green-color);
+}
+
+.wrong-answer {
+	background-color: var(--red-color);
+}
