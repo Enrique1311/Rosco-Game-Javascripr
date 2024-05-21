@@ -31,31 +31,35 @@
 	</head>
 	<body>
 		<main>
-			<div class="game-container section-padding">
-				<section class="main-screen">
-					<h1>ROSCO GAME</h1>
-					<button class="start-button">
-						START GAME<i class="fa-solid fa-play"></i>
-					</button>
-				</section>
-				<section class="game-screen">
-					<div class="time"><span>60</span></div>
-					<div class="question-container">
-						<p class="word-letter">A</p>
-						<p class="question">Question?</p>
-						<input
-							type="text"
-							class="answer"
-						/>
-						<div class="game-buttons">
-							<button class="answer-btn">Answer</button
-							><button class="pass-btn">Pass</button>
+			<div class="bg-container">
+				<div class="game-container section-padding">
+					<h1>Rosco Game</h1>
+					<section class="start-screen">
+						<h2>WELCOME!</h2>
+						<button class="start-btn">
+							START GAME<i class="fa-solid fa-play"></i>
+						</button>
+					</section>
+					<section class="game-screen">
+						<div class="game-circle">
+							<span>60</span>
 						</div>
-					</div>
-				</section>
+						<div class="question-container">
+							<p class="word-letter">A</p>
+							<p class="question">Question?</p>
+							<input
+								type="text"
+								class="answer"
+							/>
+							<div class="game-buttons">
+								<button class="answer-btn">Answer</button
+								><button class="pass-btn">Pass</button>
+							</div>
+						</div>
+					</section>
+				</div>
 			</div>
 		</main>
-
 		<script src="./main.js"></script>
 	</body>
 </html>
