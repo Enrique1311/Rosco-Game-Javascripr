@@ -59,7 +59,7 @@ h1 {
 }
 
 button {
-	padding: 0.5rem 1.2rem;
+	padding: 0.7rem 1rem;
 	border-radius: var(--btn-border-radius);
 	border: none;
 	color: var(--white-color);
@@ -116,7 +116,7 @@ button:hover {
 	position: relative;
 }
 
-.game-circle span {
+.game-circle .timer {
 	font-size: 3rem;
 	font-weight: bold;
 }
@@ -136,10 +136,6 @@ button:hover {
 	align-items: center;
 }
 
-.current-question {
-	background-color: var(--light-grey-color);
-}
-
 .question-container {
 	background-color: var(--primary-transparent-color);
 	text-align: center;
@@ -147,23 +143,26 @@ button:hover {
 	margin: auto;
 	font-size: 1.5rem;
 	border-radius: var(--main-border-radius);
-	padding: 2rem 2rem 1rem 2rem;
+	padding: 2rem 1rem 1rem 1rem;
 	position: relative;
 }
 
-.word-letter {
+.current-answer-letter {
 	position: absolute;
 	margin: auto;
 	top: -1.5rem;
 	left: calc(50% - 1.5rem);
 	background-color: var(--primary-color);
-
 	width: 3rem;
 	height: 3rem;
 	font-size: 2rem;
 	font-weight: bold;
 	border-radius: 50%;
 	text-transform: uppercase;
+}
+
+.current-answer {
+	background-color: var(--light-grey-color);
 }
 
 .correct-answer {
@@ -176,6 +175,7 @@ button:hover {
 
 .question-container input {
 	width: 100%;
+	max-width: 400px;
 	border-radius: var(--btn-border-radius);
 	padding: 0.4rem;
 	border: none;
