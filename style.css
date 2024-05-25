@@ -121,7 +121,7 @@ button:hover {
 	font-weight: bold;
 }
 
-.letter-container {
+.rosco-letter-container {
 	position: absolute;
 	bottom: 0;
 	width: 2rem;
@@ -134,6 +134,12 @@ button:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.active-letter {
+	background-color: var(--white-color);
+	color: var(--primary-color);
+	z-index: 10;
 }
 
 .question-container {
