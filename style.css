@@ -6,12 +6,12 @@
 
 :root {
 	--primary-color: #38038f;
-	--secondary-color: #fd6514;
+	--secondary-color: #fb752d;
 	--primary-transparent-color: #38038faf;
 	--grey-color: #3a3a3a;
 	--light-grey-color: #adababdb;
-	--green-color: #08d408a7;
-	--red-color: #ea0505;
+	--green-color: #038e4d;
+	--red-color: #e40404;
 	--white-color: #ffffff;
 	--black-color: #000000;
 	--btn-border-radius: 0.5rem;
@@ -137,9 +137,8 @@ button:hover {
 }
 
 .active-letter {
-	background-color: var(--white-color);
+	background-color: var(--white-color) !important;
 	color: var(--primary-color);
-	z-index: 10;
 }
 
 .question-container {
@@ -168,15 +167,17 @@ button:hover {
 }
 
 .current-answer {
-	background-color: var(--light-grey-color);
+	background-color: var(--light-grey-color) !important;
 }
 
-.correct-answer {
-	background-color: var(--green-color);
+.correct-answered {
+	background-color: var(--green-color) !important;
+	/* color: var(--primary-color) !important; */
 }
 
-.wrong-answer {
-	background-color: var(--red-color);
+.wrong-answered {
+	background-color: var(--red-color) !important;
+	/* color: var(--primary-color) !important; */
 }
 
 .question-container input {
