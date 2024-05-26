@@ -2,20 +2,38 @@ const d = document,
 	$gameCircle = d.querySelector(".game-circle"),
 	$startScreen = d.querySelector(".start-screen"),
 	$gameScreen = d.querySelector(".game-screen"),
-	$timer = d.querySelector(".timer");
+	$timer = d.querySelector(".timer"),
+	$passBtn = d.querySelector(".pass-btn");
 
 const questionsAmount = 26;
+let data = [];
 let currentQuestion = -1,
-	correctsAnswers = 0;
+	correctsAnswers = 0,
+	currentAnswer = "";
 
 const questionsState = new Array(questionsAmount).fill(0);
+
+// Get Questions ****************************************************************
+function getQuestions() {
+	fetch("game_db/questions.json")
+		.then((res) => (res.ok ? res.json() : Promise.reject(res)))
+		.then((res) => {
+			data = res.questions;
+		})
+		.catch((err) => {
+			let message = err.statusText || "Ocurrió un error";
+		});
+}
+getQuestions();
+
+// Create Rosco ****************************************************************
 
 function createRosco() {
 	for (let i = 1; i <= questionsAmount; i++) {
 		const $letterContainer = d.createElement("div");
 		$letterContainer.classList.add("rosco-letter-container");
 		$letterContainer.textContent = String.fromCharCode(i + 96);
-		$letterContainer.id = String.fromCharCode(i + 96);
+		$letterContainer.id = String.fromCharCode(i + 96).toUpperCase();
 		$gameCircle.appendChild($letterContainer);
 
 		const angle = ((i - 1) / questionsAmount) * Math.PI * 2 - Math.PI / 2;
@@ -67,55 +85,30 @@ function writeQuestions() {
 	const $currentAnswerLetter = d.querySelector(".current-answer-letter"),
 		$currentQuestion = d.querySelector(".current-question");
 
-	fetch("game_db/questions.json")
-		.then((res) => (res.ok ? res.json() : Promise.reject(res)))
-		.then((res) => {
-			let data = res.questions;
+	currentQuestion++;
 
+	if (currentQuestion >= questionsAmount) {
+		currentQuestion = 0;
+	}
+
+	if (questionsState.indexOf(0) >= 0) {
+		while (questionsState[currentQuestion] == 1) {
 			currentQuestion++;
-
 			if (currentQuestion >= questionsAmount) {
 				currentQuestion = 0;
 			}
+		}
+		$currentAnswerLetter.textContent = data[currentQuestion].id;
+		$currentQuestion.textContent = data[currentQuestion].question;
 
-			if (questionsState.indexOf(0) >= 0) {
-				while (questionsState[currentQuestion] === 1) {
-					currentQuestion++;
-					if (currentQuestion >= questionsAmount) {
-						currentQuestion = 0;
-					}
-				}
-				$currentAnswerLetter.textContent = data[currentQuestion].id;
-				$currentQuestion.textContent = data[currentQuestion].question;
-				let currentAnswer = data[currentQuestion].answer;
-
-				let letter = data[currentQuestion].id.toLowerCase();
-				d.getElementById(letter).classList.add("active-letter");
-				controlAnswer(currentAnswer, data);
-			} else {
-				clearInterval(countdown);
-			}
-		})
-		.catch((err) => {
-			let message = err.statusText || "Ocurrió un error";
-		});
+		let letter = data[currentQuestion].id;
+		d.getElementById(letter).classList.add("active-letter");
+	} else {
+		clearInterval(countdown);
+	}
 }
 
-// Update questions ****************************************************************
-
-function getQuestions() {
-	fetch("game_db/questions.json")
-		.then((res) => (res.ok ? res.json() : Promise.reject(res)))
-		.then((res) => {
-			let data = res.questions;
-			return data;
-		})
-		.catch((err) => {
-			let message = err.statusText || "Ocurrió un error";
-		});
-}
-
-function controlAnswer(currentAnswer, data) {
+function getAnswer() {
 	let $answer = d.querySelector(".answer");
 
 	$answer.addEventListener("keyup", (e) => {
@@ -125,19 +118,34 @@ function controlAnswer(currentAnswer, data) {
 				return;
 			} else {
 				let answerText = $answer.value.toUpperCase();
-				questionsState[currentQuestion] = 1;
-				let letter = data[currentQuestion].id.toLowerCase();
-				d.getElementById(letter).classList.remove("active-letter");
-
-				if (answerText === currentAnswer.toUpperCase()) {
-					d.getElementById(letter).classList.add("correct-answered");
-				} else {
-					$answer.value = "";
-					d.getElementById(letter).classList.add("wrong-answered");
-				}
-				$answer.value = "";
-				writeQuestions();
+				controlAnswer(answerText, $answer);
 			}
 		}
 	});
 }
+getAnswer();
+
+function controlAnswer(answerText, $answer) {
+	if (answerText === data[currentQuestion].answer.toUpperCase()) {
+		correctsAnswers++;
+		questionsState[currentQuestion] = 1;
+		let letter = data[currentQuestion].id;
+		d.getElementById(letter).classList.remove("active-letter");
+		d.getElementById(letter).classList.add("correct-answered");
+	} else {
+		questionsState[currentQuestion] = 1;
+		let letter = data[currentQuestion].id;
+		d.getElementById(letter).classList.remove("active-letter");
+		d.getElementById(letter).classList.add("wrong-answered");
+	}
+	$answer.value = null;
+	writeQuestions();
+}
+
+d.addEventListener("click", (e) => {
+	if (e.target.matches(".pass-btn")) {
+		let letter = data[currentQuestion].id;
+		d.getElementById(letter).classList.remove("active-letter");
+		writeQuestions();
+	}
+});
