@@ -34,19 +34,19 @@
 			<div class="bg-container">
 				<div class="game-container section-padding">
 					<h1>Rosco Game</h1>
-					<section class="start-screen">
+					<section class="start-screen container">
 						<h2>WELCOME!</h2>
 						<button class="start-btn">
 							START GAME<i class="fa-solid fa-play"></i>
 						</button>
 					</section>
-					<section class="game-screen">
+					<section class="game-screen container">
 						<div class="game-circle">
-							<p class="timer">120</p>
+							<p class="timer"></p>
 						</div>
-						<div class="question-container">
-							<p class="current-answer-letter">x</p>
-							<p class="current-question">Question?</p>
+						<div class="question-container container">
+							<p class="current-answer-letter"></p>
+							<p class="current-question"></p>
 							<input
 								type="text"
 								class="answer"
@@ -56,6 +56,19 @@
 								><button class="pass-btn">Pass</button>
 							</div>
 						</div>
+					</section>
+					<section class="results-screen container">
+						<h2>FINAL RESULTS</h2>
+						<h3 class="correct-ans-result">Correct answers: <span>10</span></h3>
+						<h3 class="wrong-ans-result">Wrong answers: <span>10</span></h3>
+
+						<h3 class="score-result">Score: <span></span>%</h3>
+						<button
+							type="button"
+							class="try-again-btn"
+						>
+							Try Again
+						</button>
 					</section>
 				</div>
 			</div>

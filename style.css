@@ -74,18 +74,20 @@ button:hover {
 	transform: scale(1.2);
 }
 
-/* Start Screen ****************************************/
-
-.start-screen {
-	z-index: 10;
-	display: block;
+.container {
 	max-width: 800px;
 	margin: auto;
-	margin-top: 3rem;
-	padding: 3rem 2rem;
+	padding: 1rem;
 	background-color: var(--primary-transparent-color);
 	border-radius: var(--main-border-radius);
 	color: var(--white-color);
+}
+
+/* Start Screen ****************************************/
+
+.start-screen {
+	display: block;
+	margin-top: 2rem;
 }
 
 .start-btn {
@@ -101,7 +103,8 @@ button:hover {
 
 .game-screen {
 	display: none;
-	color: var(--white-color);
+	background-color: transparent;
+	position: relative;
 }
 
 .game-circle {
@@ -142,13 +145,7 @@ button:hover {
 }
 
 .question-container {
-	background-color: var(--primary-transparent-color);
-	text-align: center;
-	max-width: 800px;
-	margin: auto;
 	font-size: 1.5rem;
-	border-radius: var(--main-border-radius);
-	padding: 2rem 1rem 1rem 1rem;
 	position: relative;
 }
 
@@ -166,6 +163,11 @@ button:hover {
 	text-transform: uppercase;
 }
 
+.current-question {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
 .current-answer {
 	background-color: var(--light-grey-color) !important;
 }
@@ -180,7 +182,7 @@ button:hover {
 	/* color: var(--primary-color) !important; */
 }
 
-.question-container input {
+input {
 	width: 100%;
 	max-width: 400px;
 	border-radius: var(--btn-border-radius);
@@ -201,4 +203,32 @@ button:hover {
 
 .pass-btn {
 	background-color: var(--secondary-color);
+}
+
+/* Final Results Screen **********************************************************/
+
+.results-screen {
+	display: none;
+	margin-top: 2rem;
+}
+
+.results-screen h2 {
+	margin-bottom: 1rem;
+}
+
+.correct-ans-result span {
+	color: var(--green-color);
+}
+
+.wrong-ans-result span {
+	color: var(--red-color);
+}
+
+.score-result span {
+	color: var(--light-grey-color);
+}
+
+.try-again-btn {
+	background-color: var(--secondary-color);
+	margin-top: 2rem;
 }
